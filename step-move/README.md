@@ -8,8 +8,7 @@ The step sizes and the keyboard shortcuts are configurable.
 
 ![config](img/config.png)
 
-![shortcuts](img/shortcuts.png)
-
+<img src="img/shortcuts.png" alt="shortcuts" height="450"/>
 
 
 ## Installation
