@@ -9,7 +9,7 @@ The advantage over the built-in pack grow/shrink shortcuts, which alway resizes 
 
 The step sizes and the keyboard shortcuts are configurable.
 
-![screenshot](screenshot.gif)
+![screenshot](img/screenshot.gif)
 
 ![config](img/config.png)
 
