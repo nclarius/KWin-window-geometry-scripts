@@ -11,11 +11,11 @@ Extension for KDE’s window manager adding keyboard shortcuts to stepwise resha
 
 Whether to resize only the active window or all present windows, as well as the step sizes and the keyboard shortcuts are configurable.
 
-![screenshot](img/screenshot.gif)
+![screenshot](.img/screenshot.gif)
 
-<img src="img/config.png" alt="config" height="350"/>
+<img src=".img/config.png" alt="config" height="350"/>
 
-<img src="img/shortcuts.png" alt="shortcuts" height="475"/>
+<img src=".img/shortcuts.png" alt="shortcuts" height="475"/>
 
 
 ## Installation
@@ -89,5 +89,5 @@ This program comes with absolutely no warranty.
 This is free software, and you are welcome to redistribute and/or modify it under certain conditions.  
 
 If you would like to thank me, you can always make me happy with a review or a cup of coffee:  
-<a href="https://www.pling.com/p/1636998"><img src="https://raw.githubusercontent.com/nclarius/Plasma-window-decorations/main/img/kdestore.png" height="30"/></a>
-<a href="https://www.paypal.com/donate/?hosted_button_id=7LUUJD83BWRM4"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="30"/></a>&nbsp;&nbsp;<a href="https://www.buymeacoffee.com/nclarius"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="30"/></a>
+<a href="https://www.pling.com/p/1636998"><img src="https://raw.githubusercontent.com/nclarius/Plasma-window-decorations/main/.img/kdestore.png" height="25"/></a>
+<a href="https://www.paypal.com/donate/?hosted_button_id=7LUUJD83BWRM4"><img src="https://www.paypalobjects.com/en_US/DK/i/btn/btn_donateCC_LG.gif" height="25"/></a>&nbsp;&nbsp;<a href="https://www.buymeacoffee.com/nclarius"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="25"/></a>
