@@ -9,11 +9,11 @@ The advantage over the built-in pack grow/shrink shortcuts, which alway resizes 
 
 The step sizes and the keyboard shortcuts are configurable.
 
-![screenshot](https://raw.githubusercontent.com/nclarius/Plasma-window-decorations/main/img/screenshot.gif)
+![screenshot](screenshot.gif)
 
-![config](https://raw.githubusercontent.com/nclarius/Plasma-window-decorations/main/img/config.png)
+![config](img/config.png)
 
-![shortcuts](https://raw.githubusercontent.com/nclarius/Plasma-window-decorations/main/img/shortcuts.png)
+![shortcuts](img/shortcuts.png)
 
 
 
