@@ -13,9 +13,9 @@ Whether to resize only the active window or all present windows, as well as the 
 
 ![screenshot](img/screenshot.gif)
 
-![config](img/config.png)
+<img src="img/config.png" alt="config" height="350"/>
 
-<img src="img/shortcuts.png" alt="shortcuts" height="450"/>
+<img src="img/shortcuts.png" alt="shortcuts" height="475"/>
 
 
 ## Installation
