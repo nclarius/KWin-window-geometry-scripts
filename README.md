@@ -1,4 +1,4 @@
-# KWin Window Positioning Scripts
+# KWin Window Geometry Scripts
 
 Collection of small extensions for KDE’s window manager targeting window geometry.
 
