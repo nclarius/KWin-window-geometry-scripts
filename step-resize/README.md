@@ -11,9 +11,9 @@ The step sizes and the keyboard shortcuts are configurable.
 
 ![screenshot](img/screenshot.gif)
 
-![config](img/config.png)
+<img src="img/config.png" alt="config" height="300"/>
 
-<img src="img/shortcuts.png" alt="shortcuts" height="450"/>
+<img src="img/shortcuts.png" alt="shortcuts" height="475"/>
 
 
 ## Installation
