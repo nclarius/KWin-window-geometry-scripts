@@ -56,59 +56,59 @@ function shiftCenter() {
     // shift horizontally
 
     // tiled left and larger than half width
-    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance > area.width/2)).forEach(function(win) {
-        win.geometry.width = area.width/2;
+    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance > Math.round(area.width/2))).forEach(function(win) {
+        win.geometry.width = Math.round(area.width/2);
     });
 
     // tiled right and larger than half width
-    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance > area.width/2)).forEach(function(win) {
-        win.geometry.width = area.width/2;
-        win.geometry.x = area.x + area.width/2;
+    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance > Math.round(area.width/2))).forEach(function(win) {
+        win.geometry.width = Math.round(area.width/2);
+        win.geometry.x = area.x + Math.round(area.width/2);
     });
 
     // tiled left and smaller than half width
-    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance < area.width/2)).forEach(function(win) {
-        win.geometry.width = area.width/2;
+    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance < Math.round(area.width/2))).forEach(function(win) {
+        win.geometry.width = Math.round(area.width/2);
     });
 
     // tiled right and smaller than half width
-    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance < area.width/2)).forEach(function(win) {
-        win.geometry.width = area.width/2;
-        win.geometry.x = area.x + area.width/2;
+    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance < Math.round(area.width/2))).forEach(function(win) {
+        win.geometry.width = Math.round(area.width/2);
+        win.geometry.x = area.x + Math.round(area.width/2);
     });
 
     // tiled horizontal mid
     wins.filter(win => (tiledMidHor(win, area))).forEach(function(win) {
-        win.geometry.x = area.x + area.width/2 - win.width/2;
+        win.geometry.x = area.x + Math.round(area.width/2) - Math.round(win.width/2);
     });
 
     // shift vertically
 
     // tiled top and larger than half height
-    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance > area.height/2)).forEach(function(win) {
-        win.geometry.height = area.height/2;
+    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance > Math.round(area.height/2))).forEach(function(win) {
+        win.geometry.height = Math.round(area.height/2);
     });
 
     // tiled bottom and larger than half height
-    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance > area.height/2)).forEach(function(win) {
-        win.geometry.height = area.height/2;
-        win.geometry.y = area.y + area.height/2;
+    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance > Math.round(area.height/2))).forEach(function(win) {
+        win.geometry.height = Math.round(area.height/2);
+        win.geometry.y = area.y + Math.round(area.height/2);
     });
 
     // tiled top and smaller than half height
-    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance < area.height/2)).forEach(function(win) {
-        win.geometry.height = area.height/2;
+    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance < Math.round(area.height/2))).forEach(function(win) {
+        win.geometry.height = Math.round(area.height/2);
     });
 
     // tiled bottom and smaller than half height
-    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance < area.height/2)).forEach(function(win) {
-        win.geometry.height = area.height/2;
-        win.geometry.y = area.y + area.height/2;
+    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance < Math.round(area.height/2))).forEach(function(win) {
+        win.geometry.height = Math.round(area.height/2);
+        win.geometry.y = area.y + Math.round(area.height/2);
     });
 
     // tiled vertical mid
     wins.filter(win => (tiledMidHor(win, area))).forEach(function(win) {
-        win.geometry.y = area.y + area.height/2 - win.height/2;
+        win.geometry.y = area.y + Math.round(area.height/2) - Math.round(win.height/2);
     });
 }
 

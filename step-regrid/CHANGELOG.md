@@ -1,3 +1,7 @@
+## v2.5
+
+- fix a potential crash cause
+
 ## v2.4
 
 - fix some commands not behaving correctly
