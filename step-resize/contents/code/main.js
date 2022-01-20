@@ -66,7 +66,7 @@ function incrHor() {
         // not horizontally tiled or tiled full width: increase to right and move half to left
         debug("tiled non-horizontal");
         win.geometry.width += config.stepHor;
-        win.geometry.x -= config.stepHor/2;
+        win.geometry.x -= Math.round(config.stepHor/2);
     }
     else if (tiledLeft(win, area)) {
         // tiled left: increase to right and leave in place
@@ -93,7 +93,7 @@ function decrHor() {
         // not horizontally tiled or tiled full width: decrease from right and move half to right
         debug("tiled non-horizontal");
         win.geometry.width -= config.stepHor;
-        win.geometry.x += config.stepHor/2;
+        win.geometry.x += Math.round(config.stepHor/2);
     }
     else if (tiledLeft(win, area)) {
         // tiled left: decrease from right and leave in place
@@ -120,7 +120,7 @@ function incrVer() {
         // not vertically tiled or tiled full height: increase to bottom and move half to top
         debug("tiled non-vertical");
         win.geometry.height += config.stepVer;
-        win.geometry.y -= config.stepVer/2;
+        win.geometry.y -= Math.round(config.stepVer/2);
     }
     else if (tiledTop(win, area)) {
         // tiled top: increase to bottom and leave in place
@@ -147,7 +147,7 @@ function decrVer() {
         // not vertically tiled or tiled full height: decrease from bottom and move half to bottom
         debug("tiled non-vertical");
         win.geometry.height -= config.stepVer;
-        win.geometry.y += config.stepVer/2;
+        win.geometry.y += Math.round(config.stepVer/2);
     }
     else if (tiledTop(win, area)) {
         // tiled top: decrease from bottom and leave in place

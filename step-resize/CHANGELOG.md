@@ -1,3 +1,7 @@
+## v1.7
+
+- fix a potential crash trigger
+
 ## v1.6
 
 - prevent resizing windows that are not supposed to be resized
