@@ -1,3 +1,7 @@
+## v2.5
+
+- fix a potential crash trigger
+
 ## v2.4
 
 - prevent moving windows that are not supposed to be moved

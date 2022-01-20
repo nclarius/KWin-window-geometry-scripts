@@ -47,8 +47,8 @@ function moveCenter() {
     area = workspace.clientArea(KWin.MaximizeArea, active);
     debug("move center", win.caption);
     win.clientStartUserMovedResized(win);
-    win.geometry.x = area.x + area.width/2 - win.width/2;
-    win.geometry.y = area.y + area.height/2 - win.height/2;
+    win.geometry.x = area.x + Math.round(area.width/2) - Math.round(win.width/2);
+    win.geometry.y = area.y + Math.round(area.height/2) - Math.round(win.height/2);
     win.clientFinishUserMovedResized(win);
 }
 
