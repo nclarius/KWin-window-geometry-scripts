@@ -17,8 +17,8 @@ function swapLeftRight() {
     var area = workspace.clientArea(KWin.MaximizeArea, active);
     var grid = {
         left: area.x,
-        midH: area.x + area.width/2,
-        halfWidth: area.width/2
+        midH: Math.round(area.x + area.width/2),
+        halfWidth: Math.round(area.width/2)
     };
 
     // get halves to swap

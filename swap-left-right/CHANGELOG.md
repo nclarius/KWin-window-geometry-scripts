@@ -1,3 +1,7 @@
+## v3.3
+
+- fix a potential crash trigger
+
 ## 3.2
 
 - fix incorrect fix of incorrect area obtainment
