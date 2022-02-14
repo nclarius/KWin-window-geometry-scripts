@@ -12,18 +12,17 @@ Comment[nl]=Verplaats het vensterrooster één stap (naar link/rechts/boven/onde
 Icon=preferences-system-windows
 
 X-KDE-PluginInfo-Name=stepregrid
-X-KDE-PluginInfo-Version=2.5
+X-KDE-PluginInfo-Version=2.6
 X-KDE-PluginInfo-Author=Natalie Clarius
 X-KDE-PluginInfo-Email=natalie_clarius@yahoo.de
 X-KDE-PluginInfo-License=GPL v3.0
 X-KDE-PluginInfo-Website=https://store.kde.org/p/1636998
 
 Type=Service
-X-KDE-ServiceTypes=KWin/Script,KCModule
 X-Plasma-API=javascript
 X-Plasma-MainScript=code/main.js
-
-X-KDE-Library=kwin/effects/configs/kcm_kwin4_genericscripted
+X-KDE-ServiceTypes=KWin/Script,KCModule
+X-KDE-ConfigModule=kwin/effects/configs/kcm_kwin4_genericscripted
 X-KDE-PluginKeyword=stepregrid
 X-KDE-ParentComponents=stepregrid
-
+X-KDE-PluginInfo-EnabledByDefault=true

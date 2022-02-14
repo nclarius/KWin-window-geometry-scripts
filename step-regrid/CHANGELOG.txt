@@ -1,0 +1,5 @@
+- fix configuration menu not available
+- update package structure
+- add install/uninstall scripts
+- make script automatically enabled on install
+- add changelog in BBCode format

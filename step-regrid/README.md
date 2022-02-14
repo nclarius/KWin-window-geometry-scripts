@@ -22,20 +22,18 @@ Whether to resize only the active window or all present windows, as well as the 
 
 ### Dependencies
 
-`kwin` (tested with v5.23 on X11).
+`kwin` (tested with v5.24 on X11).
 
-### Method 1: via graphical interface
+### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Re-Grid* > *Install*.
-2. Activate the script by selecting the checkbox in the respective entry.
+Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Re-Grid* > *Install*.
 
-### Method 2: via command line
+### Installation via command line
 
 ```bash
-git clone https://github.com/nclarius/KWin-window-positioning-scripts.git
-plasmapkg2 --type kwinscript -i KWin-window-positioning-scripts/step-regrid
-kwriteconfig5 --file kwinrc --group Plugins --key stepgridEnabled true
-qdbus org.kde.KWin /KWin reconfigure
+git clone https://github.com/nclarius/KWin-window-geometry-scripts.git
+cd KWin-window-geometry-scripts/step-regrid
+./install.sh
 ```
 
 
@@ -47,13 +45,6 @@ To set the shortcuts to trigger the actions, go to *Settings* > *Shortcuts* > se
 To configure the step sizes, go to *System Settings* > *Window Management* > *KWin Scripts* > configuration button in the *Step Re-Grid* entry.
 
 You may have to disable the script, apply, reenable, and reapply in order for the changes to take effect.
-
-If the configuration button is missing (this is due to a central limitation with the KWin script installation component), try the following:
-
-```bash
-mkdir -p ~/.local/share/kservices5
-ln -sf ~/.local/share/kwin/scripts/stepregrid/metadata.desktop ~/.local/share/kservices5/stepregrid.desktop
-```
 
 
 
