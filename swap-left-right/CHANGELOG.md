@@ -1,3 +1,9 @@
+## v3.4
+- update package structure
+- add install/uninstall scripts
+- make script automatically enabled on install
+- add changelog in BB Code format
+
 ## v3.3
 
 - fix a potential crash trigger
