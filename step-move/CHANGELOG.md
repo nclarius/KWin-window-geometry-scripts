@@ -1,3 +1,10 @@
+## v2.6
+- fix configuration menu not available
+- update package structure
+- add install/uninstall scripts
+- make script automatically enabled on install
+- add changelog in BBCode format
+
 ## v2.5
 
 - fix a potential crash trigger
