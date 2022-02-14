@@ -11,22 +11,19 @@ Extension for KDE’s window manager to add a keyboard shortcut to swap the wind
 
 ### Dependencies
 
-`kwin` (tested with v5.22 - v5.23 on X11).
+`kwin` (tested with v5.24 on X11).
 
-### Method 1: via graphical interface
+### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap Left and Right* > *Install*.
-2. Activate the script by selecting the checkbox in the respective entry.
+Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap Left and Right* > *Install*.
 
-### Method 2: via command line
+### Installation via command line
 
 ```bash
-git clone https://github.com/nclarius/KWin-window-positioning-scripts.git
-plasmapkg2 --type kwinscript -i KWin-window-positioning-scripts/swap-left-right
-kwriteconfig5 --file kwinrc --group Plugins --key swapleftrightEnabled true
-qdbus org.kde.KWin /KWin reconfigure
+git clone https://github.com/nclarius/KWin-window-geometry-scripts.git
+cd KWin-window-positioning-scripts/swap-left-right
+./install.sh
 ```
-
 
 
 ## Configuration
