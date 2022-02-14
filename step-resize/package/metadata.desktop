@@ -12,18 +12,17 @@ Comment[nl]=Pas de afmetingen (breedte/hoogte) van het actieve venster stapsgewi
 Icon=preferences-system-windows
 
 X-KDE-PluginInfo-Name=stepresize
-X-KDE-PluginInfo-Version=1.7
+X-KDE-PluginInfo-Version=1.8
 X-KDE-PluginInfo-Author=Natalie Clarius
 X-KDE-PluginInfo-Email=natalie_clarius@yahoo.de
 X-KDE-PluginInfo-License=GPL v3.0
 X-KDE-PluginInfo-Website=https://store.kde.org/p/1632260
 
 Type=Service
-X-KDE-ServiceTypes=KWin/Script,KCModule
 X-Plasma-API=javascript
 X-Plasma-MainScript=code/main.js
-
-X-KDE-Library=kwin/effects/configs/kcm_kwin4_genericscripted
+X-KDE-ServiceTypes=KWin/Script,KCModule
+X-KDE-ConfigModule=kwin/effects/configs/kcm_kwin4_genericscripted
 X-KDE-PluginKeyword=stepresize
 X-KDE-ParentComponents=stepresize
-
+X-KDE-PluginInfo-EnabledByDefault=true

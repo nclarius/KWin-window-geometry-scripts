@@ -20,20 +20,18 @@ The step sizes and the keyboard shortcuts are configurable.
 
 ### Dependencies
 
-`kwin` (tested with v5.23 on X11).
+`kwin` (tested with v5.24 on X11).
 
-### Method 1: via graphical interface
+### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Resize* > *Install*.
-2. Activate the script by selecting the checkbox in the respective entry.
+Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Resize* > *Install*.
 
-### Method 2: via command line
+### Installation via command line
 
 ```bash
-git clone https://github.com/nclarius/KWin-window-positioning-scripts.git
-plasmapkg2 --type kwinscript -i KWin-window-positioning-scripts/step-resize
-kwriteconfig5 --file kwinrc --group Plugins --key stepresizeEnabled true
-qdbus org.kde.KWin /KWin reconfigure
+git clone https://github.com/nclarius/KWin-window-geometry-scripts.git
+cd KWin-window-geometry-scripts/step-resize
+./install.sh
 ```
 
 
@@ -45,13 +43,6 @@ To set the shortcuts to trigger the actions, go to *Settings* > *Shortcuts* > se
 To configure the step sizes, go to *System Settings* > *Window Management* > *KWin Scripts* > configuration button in the *Step Resize* entry.
 
 You may have to disable the script, apply, reenable, and reapply in order for the changes to take effect.
-
-If the configuration button is missing (this is due to a central limitation with the KWin script installation component), try the following:
-
-```bash
-mkdir -p ~/.local/share/kservices5
-ln -sf ~/.local/share/kwin/scripts/stepresize/metadata.desktop ~/.local/share/kservices5/stepresize.desktop
-```
 
 
 

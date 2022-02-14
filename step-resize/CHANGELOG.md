@@ -1,3 +1,10 @@
+## v1.8
+- fix configuration menu not available
+- update package structure
+- add install/uninstall scripts
+- make script automatically enabled on install
+- add changelog in BBCode format
+
 ## v1.7
 
 - fix a potential crash trigger
