@@ -1,4 +1,7 @@
 ## v3.4
+- fix metadata not found
+
+## v3.4
 - update package structure
 - add install/uninstall scripts
 - make script automatically enabled on install
