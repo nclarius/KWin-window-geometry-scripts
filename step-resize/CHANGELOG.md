@@ -1,6 +1,9 @@
 ## v1.9
 - fix metadata not found
 
+## v1.9
+- fix metadata not found
+
 ## v1.8
 - fix configuration menu not available
 - update package structure
