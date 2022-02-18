@@ -23,189 +23,194 @@ config = {
 ///////////////////////
 
 debugMode = true;
-function debug(...args) {if (debugMode) {console.debug("Step Re-grid:", ...args);}}
+function debug(...args) {if (debugMode) {console.debug("stepregrid:", ...args);}}
 debug("initializing");
-debug("step sizes:", "horizontal:", config.stepHor, "vertical:", config.stepVer);
-debug("filters:", "resize others:", config.resizeOthers, "resize minimized:", config.resizeMinimized, "tolerance:", config.tolerance);
+debug("step sizes:",
+      "horizontal:", config.stepHor,
+      "vertical:",   config.stepVer);
+debug("filters:",
+      "resize others:",    config.resizeOthers,
+      "resize minimized:", config.resizeMinimized,
+      "tolerance:",        config.tolerance);
 console.debug("");
+
+
+///////////////////////
+// parameters
+///////////////////////
+Direction = ["Center", "Right", "Left", "Down", "Up"].
+    reduce((obj, p) => Object.assign(obj, { [p]: p }), {});
+Dimension = ["Horizontal", "Vertical"].
+    reduce((obj, p) => Object.assign(obj, { [p]: p }), {});
 
 
 ///////////////////////
 // register shortcuts
 ///////////////////////
 
-registerShortcut("Step regrid: shift center"    , "Step Regrid: Shift Center"    , "Alt+K", shiftCenter);
-registerShortcut("Step regrid: shift rightwards", "Step Regrid: Shift Rightwards", "Alt+L", shiftRight);
-registerShortcut("Step regrid: shift leftwards" , "Step Regrid: Shift Leftwards" , "Alt+J", shiftLeft);
-registerShortcut("Step regrid: shift downwards" , "Step Regrid: Shift Downwards" , "Alt+,", shiftDown);
-registerShortcut("Step regrid: shift upwards"   , "Step Regrid: Shift Upwards"   , "Alt+I", shiftUp);
+registerShortcut("Step regrid: shift center"    ,
+                 "Step Regrid: Shift Center"    ,
+                 "Alt+K",
+                 () => {shift(Direction.Center);});
+registerShortcut("Step regrid: shift rightwards",
+                 "Step Regrid: Shift Rightwards",
+                 "Alt+L",
+                 () => {shift(Direction.Right);});
+registerShortcut("Step regrid: shift leftwards" ,
+                 "Step Regrid: Shift Leftwards" ,
+                 "Alt+J",
+                 () => {shift(Direction.Left);});
+registerShortcut("Step regrid: shift downwards" ,
+                 "Step Regrid: Shift Downwards" ,
+                 "Alt+,",
+                  () => {shift(Direction.Down);});
+registerShortcut("Step regrid: shift upwards"   ,
+                 "Step Regrid: Shift Upwards"   ,
+                 "Alt+I",
+                 () => {shift(Direction.Up);});
 
 
 ///////////////////////
 // regrid windows
 ///////////////////////
 
-// in all functions, decrease large windows before increasing small windows to ensure compatibility with overlap prevention script
-
-function shiftCenter() {
-    debug("regrid center");
+function shift(direction) {
     active = workspace.activeClient;
     area = workspace.clientArea(KWin.MaximizeArea, active);
     wins = getClients(area);
+    debug(direction);
 
-    halfWidth = Math.round(area.width/2);
-    halfHeight = Math.round(area.height/2);
+    switch (direction) {
+        // in all functions, decrease large windows before increasing small windows to ensure compatibility with overlap prevention script
 
-    // shift horizontally
+        case Direction.Center:
+            half = ["width", "height"].reduce((obj, wh) =>
+                Object.assign(obj, { [wh]: Math.round(area[wh]/2) }), {});
+            shiftCenter(Dimension.Horizontal);
+            shiftCenter(Dimension.Vertical);
 
-    // tiled left and larger than half width
-    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance > halfWidth)).forEach(win => {
-        win.geometry.width = halfWidth;
-    });
+            function shiftCenter(dimension) {
+                xy = wh = null;
+                switch (dimension) {
+                    case Dimension.Horizontal:
+                        xy = "x";
+                        wh = "width";
+                        break;
+                    case Dimension.Vertical:
+                        xy = "y";
+                        wh = "height";
+                        break;
+                }
 
-    // tiled right and larger than half width
-    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance > halfWidth)).forEach(win => {
-        win.geometry.width = halfWidth;
-        win.geometry.x = area.x + halfWidth;
-    });
+                // tiled left/top and larger than half width/height
+                wins.filter(win => (
+                    tiledStart(win, area, xy, wh)
+                 && tiledLarge(win, area, xy, wh))).
+                forEach(win => {
+                    win.geometry[wh] = half[wh];
+                });
 
-    // tiled left and smaller than half width
-    wins.filter(win => (tiledLeft(win, area) && win.width + config.tolerance < halfWidth)).forEach(win => {
-        win.geometry.width = halfWidth;
-    });
+                // tiled right/bottom and larger than half width/height
+                wins.filter(win => (
+                    tiledEnd(win, area, xy, wh)
+                 && tiledLarge(win, area, xy, wh))).
+                forEach(win => {
+                    win.geometry[wh] = half[wh];
+                    win.geometry[xy] = area[xy] + half[wh];
+                });
 
-    // tiled right and smaller than half width
-    wins.filter(win => (tiledRight(win, area) && win.width + config.tolerance < halfWidth)).forEach(win => {
-        win.geometry.width = halfWidth;
-        win.geometry.x = area.x + halfWidth;
-    });
+                // tiled Left/top and smaller than half width/height
+                wins.filter(win => (
+                    tiledStart(win, area, xy, wh)
+                 && tiledSmall(win, area, xy, wh))).
+                forEach(win => {
+                    win.geometry[wh] = half[wh];
+                });
 
-    // tiled horizontal mid
-    wins.filter(win => (tiledMidHor(win, area))).forEach(win => {
-        win.geometry.x = area.x + halfWidth - Math.round(win.width/2);
-    });
+                // tiled right/bottom and smaller than half width/height
+                wins.filter(win => (
+                    tiledEnd(win, area, xy, wh)
+                 && tiledSmall(win, area, xy, wh))).
+                forEach(win => {
+                    win.geometry[wh] = half[wh];
+                    win.geometry[xy] = area[xy] + half[wh];
+                });
 
-    // shift vertically
+                // tiled horizontal/vertical mid or exactly half width/height
+                wins.filter(win => (
+                    tiledMid(win, area, xy, wh))).
+                forEach(win => {
+                    win.geometry[xy] =
+                        area[xy] + half[wh] - Math.round(win[wh]/2);
+                });
 
-    // tiled top and larger than half height
-    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance > halfHeight)).forEach(win => {
-        win.geometry.height = halfHeight;
-    });
+                // tiled full width/height or exactly half width/height: do nothing
+            }
 
-    // tiled bottom and larger than half height
-    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance > halfHeight)).forEach(win => {
-        win.geometry.height = halfHeight;
-        win.geometry.y = area.y + halfHeight;
-    });
+        default: //righ/left/down/up
+            // geometry parameter to adjust for (horizontal/vertical)
+            xy = wh = step = null;
+            switch (direction) {
+                case Direction.Right: case Direction.Left:
+                    xy = "x";
+                    wh = "width";
+                    step = config.stepHor;
+                    break;
+                case Direction.Down: case Direction.Up:
+                    xy = "y";
+                    wh = "height";
+                    step = config.stepVer;
+                    break;
+            }
+            sign = null;
+            switch (direction) {
+                case Direction.Right: case Direction.Down:
+                    sign = 1;
+                    shiftEnd();
+                    shiftMid();
+                    shiftStart();
+                    break;
+                case Direction.Left: case Direction.Up:
+                    sign = -1;
+                    shiftStart();
+                    shiftMid();
+                    shiftEnd();
+                    break;
+            }
 
-    // tiled top and smaller than half height
-    wins.filter(win => (tiledTop(win, area) && win.height + config.tolerance < halfHeight)).forEach(win => {
-        win.geometry.height = halfHeight;
-    });
+            // tiled left/top: increase/decrease from right/bottom
+            function shiftStart() {
+                wins.filter(win =>
+                    tiledStart(win, area, xy, wh)).
+                forEach(win => {
+                    win.geometry[wh] += sign * step;
+                });
+            }
 
-    // tiled bottom and smaller than half height
-    wins.filter(win => (tiledBottom(win, area) && win.height + config.tolerance < halfHeight)).forEach(win => {
-        win.geometry.height = halfHeight;
-        win.geometry.y = area.y + halfHeight;
-    });
+            // tiled mid: move towards/from right/bottom
+            function shiftMid() {
+                wins.filter(win =>
+                    tiledMid(win, area, xy, wh)).
+                forEach(win => {
+                    win.geometry[xy] += sign * step;
+                });
+            }
 
-    // tiled vertical mid
-    wins.filter(win => (tiledMidHor(win, area))).forEach(win => {
-        win.geometry.y = area.y + halfHeight - Math.round(win.height/2);
-    });
+            // tiled right/bottom: decrease/increase from left/top
+            function shiftEnd() {
+                wins.filter(win =>
+                    tiledEnd(win, area, xy, wh)).
+                forEach(win => {
+                    debug(win.caption);
+                    win.geometry[xy] += sign * step;
+                    win.geometry[wh] -= sign * step;
+                });
+            }
+
+            break;
+    }
 }
 
-function shiftRight() {
-    debug("regrid rightwards");
-    active = workspace.activeClient;
-    area = workspace.clientArea(KWin.MaximizeArea, active);
-    wins = getClients(area);
-
-    // tiled right: decrease from left
-    wins.filter(win => tiledRight(win, area)).forEach(function(win) {
-        win.geometry.width -= config.stepHor;
-        win.geometry.x += config.stepHor;
-    });
-
-    // tiled mid: move towards right
-    wins.filter(win => tiledMidHor(win, area)).forEach(function(win) {
-        win.geometry.x += config.stepHor;
-    });
-
-    // tiled left: increase to right
-    wins.filter(win => tiledLeft(win, area)).forEach(function(win) {
-        win.geometry.width += config.stepHor;
-    });
-}
-
-function shiftLeft() {
-    debug("regrid leftwards");
-    active = workspace.activeClient;
-    area = workspace.clientArea(KWin.MaximizeArea, active);
-    wins = getClients(area);
-
-    // tiled left: decrease from right
-    wins.filter(win => tiledLeft(win, area)).forEach(function(win) {
-        win.geometry.width -= config.stepHor;
-    });
-
-    // tiled mid: move towards left
-    wins.filter(win => tiledMidHor(win, area)).forEach(function(win) {
-        win.geometry.x -= config.stepHor;
-    });
-
-    // tiled right: increase to left
-    wins.filter(win => tiledRight(win, area)).forEach(function(win) {
-        win.geometry.width += config.stepHor;
-        win.geometry.x -= config.stepHor;
-    });
-}
-
-function shiftDown() {
-    debug("regrid downwards");
-    active = workspace.activeClient;
-    area = workspace.clientArea(KWin.MaximizeArea, active);
-    wins = getClients(area);
-
-    // tiled bottom: decrease from top
-    wins.filter(win => tiledBottom(win, area)).forEach(function(win) {
-        win.geometry.height -= config.stepVer;
-        win.geometry.y += config.stepVer;
-    });
-
-    // tiled mid: move towards bottom
-    wins.filter(win => tiledMidVer(win, area)).forEach(function(win) {
-        win.geometry.y += config.stepVer;
-    });
-
-    // tiled top: increase to bottom
-    wins.filter(win => tiledTop(win, area)).forEach(function(win) {
-        win.geometry.height += config.stepVer;
-    });
-}
-
-function shiftUp() {
-    debug("regrid upwards");
-    active = workspace.activeClient;
-    area = workspace.clientArea(KWin.MaximizeArea, active);
-    wins = getClients(area);
-
-    // tiled top: decrease from bottom
-    wins.filter(win => tiledTop(win, area)).forEach(function(win) {
-        win.geometry.height -= config.stepVer;
-    });
-
-    // tiled mid: move towards top
-    wins.filter(win => tiledMidVer(win, area)).forEach(function(win) {
-        win.geometry.y -= config.stepVer;
-    });
-
-    // tiled bottom: increase to top
-    wins.filter(win => tiledBottom(win, area)).forEach(function(win) {
-        win.geometry.height += config.stepVer;
-        win.geometry.y -= config.stepVer;
-    });
-}
 
 ///////////////////////
 // filter relevant windows
@@ -213,12 +218,12 @@ function shiftUp() {
 
 function getClients(area) {
     return workspace.clientList().filter(client =>
-        (client == workspace.activeClient || config.resizeOthers) &&
-        client.normalWindow && client.moveable && client.resizeable &&
-        (client.desktop == workspace.currentDesktop || client.allDesktops) &&
-        client.screen == workspace.activeClient.screen &&
-        (!client.minimized || config.includeMinimized) &&
-        !client.fullScreen);
+           (client == workspace.activeClient || config.resizeOthers)
+        && client.normalWindow && client.moveable && client.resizeable
+        && (client.desktop == workspace.currentDesktop || client.allDesktops)
+        && client.screen == workspace.activeClient.screen
+        && (!client.minimized || config.includeMinimized)
+        && !client.fullScreen);
 }
 
 
@@ -226,40 +231,45 @@ function getClients(area) {
 // determine tiledness
 ///////////////////////
 
-function tiledWidth(win, area) {
-    return Math.abs(win.width - area.width) <= config.tolerance;
+// tiled full width/height
+function tiledFull(win, area, xy, wh) {
+    return near(win[wh], area[wh]);
 }
 
-function tiledLeft(win, area) {
-    return Math.abs(win.x - area.x) <= config.tolerance
-        && !tiledWidth(win, area);
+// tiled left/top
+function tiledStart(win, area, xy, wh) {
+    return near(win[xy], area[xy])
+        && !tiledFull(win, area, xy, wh);
 }
 
-function tiledRight(win, area) {
-    return Math.abs((win.x + win.width) - (area.x + area.width)) <= config.tolerance
-        && !tiledWidth(win, area);
+// tiled right/bottom
+function tiledEnd(win, area, xy, wh) {
+    return near(win[xy] + win[wh], area[xy] + area[wh])
+        && !tiledFull(win, area, xy, wh);
 }
 
-function tiledMidHor(win, area) {
-    return (!tiledLeft(win, area) && !tiledRight(win, area)
-        && !tiledWidth(win, area));
+// tiled mid horizontal/vertical
+function tiledMid(win, area, xy, wh) {
+    return !tiledStart(win, area, xy, wh)
+        && !tiledEnd(win, area, xy, wh)
+        && !tiledFull(win, area, xy, wh);
 }
 
-function tiledHeight(win, area) {
-    return Math.abs(win.height - area.height) <= config.tolerance;
+// width/height relative to half width/height
+function tiledHalf(win, area, xy, wh) {
+    return Math.abs(win[wh] - Math.round(area[wh]/2)) <= config.tolerance;
 }
 
-function tiledTop(win, area) {
-    return Math.abs(win.y - area.y) <= config.tolerance
-        && !tiledHeight(win, area);
+function tiledSmall(win, area, xy, wh) {
+    return win[wh] + config.tolerance < Math.round(area[wh]/2)
+        && !tiledFull(win, area, xy, wh);
 }
 
-function tiledBottom(win, area) {
-    return Math.abs((win.y + win.height) - (area.y + area.height)) <= config.tolerance
-        && !tiledHeight(win, area);
+function tiledLarge(win, area, xy, wh) {
+    return win[wh] - config.tolerance > Math.round(area[wh]/2)
+        && !tiledFull(win, area, xy, wh);
 }
 
-function tiledMidVer(win, area) {
-    return (!tiledTop(win, area) && !tiledBottom(win, area)
-        && !tiledHeight(win, area));
+function near(a, b) {
+    return Math.abs(a - b) <= config.tolerance;
 }
