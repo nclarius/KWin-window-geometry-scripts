@@ -1,3 +1,9 @@
+# v3.0
+- potential fix metadata not found
+- fix move center not working
+- prevent moving maximized windows
+- refactor code
+
 ## v2.8
 - fix metadata not found
 

@@ -1,1 +1,4 @@
-- fix metadata not found
+- potential fix metadata not found
+- fix move center not working
+- prevent moving maximized windows
+- refactor code

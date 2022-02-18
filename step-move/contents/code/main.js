@@ -10,8 +10,8 @@ GNU General Public License v3.0
 ///////////////////////
 
 config = {
-    stepHorizontal: readConfig("stepHorizontal", 10),
-    stepVertical:   readConfig("stepVertical"  , 10)
+    stepHor: readConfig("stepHor", 10),
+    stepVer: readConfig("stepVer", 10)
 };
 
 
@@ -20,9 +20,10 @@ config = {
 ///////////////////////
 
 debugMode = true;
-function debug(...args) {if (debugMode) {console.debug("Step Move:", ...args);}}
+function debug(...args) {if (debugMode) {console.debug("stepmove:", ...args);}}
 debug("initializing");
-debug("settings:", "step horizontal:", config.stepHorizontal, "step vertical:", config.stepVertical);
+debug("settings:", "step horizontal:", config.stepHor, "step vertical:", config.stepVer);
+Direction = ["center", "left", "right", "up", "down"].reduce((obj, p) => Object.assign(obj, { [p]: p }), {});
 console.debug("");
 
 
@@ -30,60 +31,49 @@ console.debug("");
 // register shortcuts
 ///////////////////////
 
-registerShortcut("Step move: center", "Step Move: Center", "Alt+D", moveCenter);
-registerShortcut("Step move: left"  , "Step Move: Left"  , "Alt+S", moveLeft  );
-registerShortcut("Step move: right" , "Step Move: Right" , "Alt+F", moveRight );
-registerShortcut("Step move: up"    , "Step Move: Up"    , "Alt+E", moveUp    );
-registerShortcut("Step move: down"  , "Step Move: Down"  , "Alt+C", moveDown  );
+// dir = Object.fromEntries(["center", "left", "right", "up", "down"].map(p => [p, p]) );
+registerShortcut("Step move: center", "Step Move: Center", "Alt+D", function() {move(Direction.center);});
+registerShortcut("Step move: left"  , "Step Move: Left"  , "Alt+S", function() {move(Direction.left)  ;});
+registerShortcut("Step move: right" , "Step Move: Right" , "Alt+F", function() {move(Direction.right) ;});
+registerShortcut("Step move: up"    , "Step Move: Up"    , "Alt+E", function() {move(Direction.up)    ;});
+registerShortcut("Step move: down"  , "Step Move: Down"  , "Alt+C", function() {move(Direction.down)  ;});
 
 
 ///////////////////////
 // move window
 ///////////////////////
 
-function moveCenter() {
-    win = workspace.activeClient;
-    if (!win.moveable) return;
-    area = workspace.clientArea(KWin.MaximizeArea, active);
-    debug("move center", win.caption);
-    win.clientStartUserMovedResized(win);
-    win.geometry.x = area.x + Math.round(area.width/2) - Math.round(win.width/2);
-    win.geometry.y = area.y + Math.round(area.height/2) - Math.round(win.height/2);
-    win.clientFinishUserMovedResized(win);
-}
+function move(direction) {
+    client = workspace.activeClient;
+    win = client.geometry;
+    area = workspace.clientArea(KWin.MaximizeArea, client);
+    if (!client.moveable || win == area) return;
+    debug(direction, client.caption, win);
+    client.clientStartUserMovedResized(client);
+    switch (direction) {
 
-function moveLeft() {
-    win = workspace.activeClient;
-    if (!win.moveable) return;
-    debug("move left", win.caption);
-    win.clientStartUserMovedResized(win);
-    win.geometry.x -= config.stepHorizontal;
-    win.clientFinishUserMovedResized(win);
-}
+        case Direction.center:
+            win.x = area.x + Math.round(area.width/2) - Math.round(win.width/2);
+            win.y = area.y + Math.round(area.height/2) - Math.round(win.height/2);
+            break;
 
-function moveRight() {
-    win = workspace.activeClient;
-    if (!win.moveable) return;
-    debug("move right", win.caption);
-    win.clientStartUserMovedResized(win);
-    win.geometry.x += config.stepHorizontal;
-    win.clientFinishUserMovedResized(win);
-}
+        case Direction.left:
+            win.x -= config.stepHor;
+            break;
 
-function moveUp() {
-    win = workspace.activeClient;
-    if (!win.moveable) return;
-    debug("move up", win.caption);
-    win.clientStartUserMovedResized(win);
-    win.geometry.y -= config.stepVertical;
-    win.clientFinishUserMovedResized(win);
-}
+        case Direction.right:
+            win.x += config.stepHor;
+            break;
 
-function moveDown() {
-    win = workspace.activeClient;
-    if (!win.moveable) return;
-    debug("move down", win.caption);
-    win.clientStartUserMovedResized(win);
-    win.geometry.y += config.stepVertical;
-    win.clientFinishUserMovedResized(win);
+        case Direction.up:
+            win.y -= config.stepVer;
+            break;
+
+        case Direction.down:
+            win.y += config.stepVer;
+            break;
+
+    }
+    client.clientFinishUserMovedResized(client);
+
 }
