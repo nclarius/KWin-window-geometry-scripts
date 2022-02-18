@@ -1,5 +1,9 @@
 # v2.0
 - refactor code
+- update readme for compatibility with older Plasma versions
+
+# v2.0
+- refactor code
 
 ## v1.10
 - fix metadata not found

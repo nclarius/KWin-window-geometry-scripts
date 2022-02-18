@@ -1,1 +1,2 @@
 - refactor code
+- update readme for compatibility with older Plasma versions
