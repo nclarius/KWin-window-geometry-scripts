@@ -1,3 +1,6 @@
+# v2.0
+- refactor code
+
 ## v1.10
 - fix metadata not found
 
