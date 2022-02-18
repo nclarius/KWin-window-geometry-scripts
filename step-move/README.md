@@ -37,7 +37,16 @@ To set the shortcuts to trigger the actions, go to *Settings* > *Shortcuts* > se
 
 To configure the step sizes, go to *System Settings* > *Window Management* > *KWin Scripts* > configuration button in the *Step Move* entry.
 
-You may have to disable the script, apply, reenable, and reapply in order for the changes to take effect.
+You may need to disable the script, apply, reenable, and reapply in order for the changes to take effect.
+
+In Plasma versions < 5.24, a bug in the KWin scripting system [[1]](https://bugs.kde.org/show_bug.cgi?id=411430) [[2]](https://bugs.kde.org/show_bug.cgi?id=444378) causes the configuration file not to be found. To fix this, please execute the following commands in a terminal:
+
+```bash
+sed -i 's/ConfigModule/Library/g' ~/.local/share/kwin/scripts/stepmove/metadata.desktop
+mkdir -p ~/.local/share/kservices5/
+ln -s ~/.local/share/kwin/scripts/stepmove/metadata.desktop ~/.local/share/kservices5/stepmove.desktop
+qdbus org.kde.KWin /KWin reconfigure
+```
 
 
 

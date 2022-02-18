@@ -1,3 +1,7 @@
+## v3.1
+- refactor code
+- update readme for compatibility with older Plasma versions
+
 # v3.0
 - potential fix metadata not found
 - fix move center not working
