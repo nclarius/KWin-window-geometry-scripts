@@ -1,3 +1,7 @@
+## v3.2
+- fix configuration not applied
+- fix wrong line in metadata
+
 ## v3.1
 - refactor code
 - update readme for compatibility with older Plasma versions

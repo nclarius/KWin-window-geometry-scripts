@@ -1,1 +1,2 @@
 - fix configuration not applied
+- fix wrong line in metadata
