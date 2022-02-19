@@ -12,7 +12,7 @@ Comment[nl]=Verplaats het actieve venster één stap opzij (links/rechts/boven/o
 Icon=preferences-system-windows
 
 X-KDE-PluginInfo-Name=stepmove
-X-KDE-PluginInfo-Version=3.1
+X-KDE-PluginInfo-Version=3.2
 X-KDE-PluginInfo-Author=Natalie Clarius
 X-KDE-PluginInfo-Email=natalie_clarius@yahoo.de
 X-KDE-PluginInfo-License=GPL v3.0
@@ -22,7 +22,6 @@ Type=Service
 X-Plasma-API=javascript
 X-Plasma-MainScript=code/main.js
 X-KDE-ServiceTypes=KWin/Script,KCModule
-X-KDE-Library=kwin/effects/configs/kcm_kwin4_genericscripted
 X-KDE-ConfigModule=kwin/effects/configs/kcm_kwin4_genericscripted
 X-KDE-PluginKeyword=stepmove
 X-KDE-ParentComponents=stepmove

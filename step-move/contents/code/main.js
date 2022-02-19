@@ -10,8 +10,8 @@ GNU General Public License v3.0
 ///////////////////////
 
 config = {
-    stepHor: readConfig("stepHor", 10),
-    stepVer: readConfig("stepVer", 10)
+    stepHor: readConfig("stepHorizontal", 10),
+    stepVer: readConfig("stepVertical",   10)
 };
 
 
@@ -44,22 +44,22 @@ registerShortcut("Step move: center",
                  "Step Move: Center",
                  "Alt+D",
                  () => {move(Direction.Center);});
-registerShortcut("Step move: left"  ,
-                 "Step Move: Left"  ,
+registerShortcut("Step move: left",
+                 "Step Move: Left",
                  "Alt+S",
-                 () => {move(Direction.Left)  ;});
-registerShortcut("Step move: right" ,
-                 "Step Move: Right" ,
+                 () => {move(Direction.Left);});
+registerShortcut("Step move: right",
+                 "Step Move: Right",
                  "Alt+F",
-                 () => {move(Direction.Right) ;});
-registerShortcut("Step move: up"    ,
-                 "Step Move: Up"    ,
+                 () => {move(Direction.Right);});
+registerShortcut("Step move: up",
+                 "Step Move: Up",
                  "Alt+E",
-                 () => {move(Direction.Up)    ;});
-registerShortcut("Step move: down"  ,
-                 "Step Move: Down"  ,
+                 () => {move(Direction.Up);});
+registerShortcut("Step move: down",
+                 "Step Move: Down",
                  "Alt+C",
-                 () => {move(Direction.Down)  ;});
+                 () => {move(Direction.Down);});
 
 
 ///////////////////////
