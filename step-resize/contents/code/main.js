@@ -119,8 +119,8 @@ function resize(direction, dimension) {
             client.clientStartUserMovedResized(client);
             if (tiledStart(win, area, xy, wh)) {
                 // tiled left/top: resize on bottom/right edge, keep position
-                win[wh] += sign * step;
                 debug("tiled start", dimension);
+                win[wh] += sign * step;
             }
             else if (tiledMid(win, area, xy, wh)) {
                 // full width/height or not tiled horizontally/vertically: increase/decrease one step on bottom/right edge, then move half the size of the step in the other direction to keep horizontal/vertical alignment
