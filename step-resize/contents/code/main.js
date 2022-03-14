@@ -11,7 +11,7 @@ GNU General Public License v3.0
 
 config = {
     stepHor: readConfig("stepHorizontal", 50),
-    stepVer: readConfig("stepVertical", 50),
+    stepVer: readConfig("stepVertical",   50),
     tolerance: readConfig("tolerance", 0)
 };
 
@@ -43,24 +43,24 @@ Dimension = ["Areal", "Horizontal", "Vertical"].
 // register shortcuts
 ///////////////////////
 
-registerShortcut("Step resize: grow size"    ,
-                 "Step Resize: Grow Size"    ,
+registerShortcut("Step resize: grow size",
+                 "Step Resize: Grow Size",
                  "Alt+O",
                  () => {resize(Direction.Increase, Dimension.Areal);});
-registerShortcut("Step resize: shrink size"  ,
-                 "Step Resize: Shrink Size"  ,
+registerShortcut("Step resize: shrink size",
+                 "Step Resize: Shrink Size",
                  "Alt+M",
                  () => {resize(Direction.Decrease, Dimension.Areal);});
-registerShortcut("Step resize: grow width"   ,
-                 "Step Resize: Grow Width"   ,
+registerShortcut("Step resize: grow width",
+                 "Step Resize: Grow Width",
                  "Alt+L",
                  () => {resize(Direction.Increase, Dimension.Horizontal);});
-registerShortcut("Step resize: shrink width" ,
-                 "Step Resize: Shrink Width" ,
+registerShortcut("Step resize: shrink width",
+                 "Step Resize: Shrink Width",
                  "Alt+J",
                  () => {resize(Direction.Decrease, Dimension.Horizontal);});
-registerShortcut("Step resize: grow height"  ,
-                 "Step Resize: Grow Height"  ,
+registerShortcut("Step resize: grow height",
+                 "Step Resize: Grow Height",
                  "Alt+I",
                  () => {resize(Direction.Increase, Dimension.Vertical);});
 registerShortcut("Step resize: shrink height",
@@ -89,6 +89,7 @@ function resize(direction, dimension) {
             break;
 
         case Dimension.Horizontal: case Dimension.Vertical:
+
             // left/top/right/bottom positions of client/area
             xy = wh = step = null;
             switch (dimension) {
@@ -119,8 +120,8 @@ function resize(direction, dimension) {
             client.clientStartUserMovedResized(client);
             if (tiledStart(win, area, xy, wh)) {
                 // tiled left/top: resize on bottom/right edge, keep position
-                win[wh] += sign * step;
                 debug("tiled start", dimension);
+                win[wh] += sign * step;
             }
             else if (tiledMid(win, area, xy, wh)) {
                 // full width/height or not tiled horizontally/vertically: increase/decrease one step on bottom/right edge, then move half the size of the step in the other direction to keep horizontal/vertical alignment
