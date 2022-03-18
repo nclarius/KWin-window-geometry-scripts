@@ -42,9 +42,9 @@ To set the shortcuts to trigger the actions, go to *Settings* > *Shortcuts* > se
 
 To configure the step sizes, go to *System Settings* > *Window Management* > *KWin Scripts* > configuration button in the *Step Resize* entry.
 
-You may need to disable the script, apply, reenable, and reapply in order for the changes to take effect.
+You may need to uncheck the checkbox for the script, apply the settings, recheck, and reapply in order for the changes to take effect.
 
-In Plasma versions < 5.24, a bug in the KWin scripting system [[1]](https://bugs.kde.org/show_bug.cgi?id=411430) [[2]](https://bugs.kde.org/show_bug.cgi?id=444378) causes the configuration file not to be found. To fix this, please execute the following commands in a terminal:
+In Plasma versions < 5.24, a bug in the KWin scripting system [[1]](https://bugs.kde.org/show_bug.cgi?id=411430) [[2]](https://bugs.kde.org/show_bug.cgi?id=444378) may cause the configuration file not to be found. To fix this, please execute the following commands in a terminal:
 
 ```bash
 sed -i 's/ConfigModule/Library/g' ~/.local/share/kwin/scripts/stepresize/metadata.desktop
