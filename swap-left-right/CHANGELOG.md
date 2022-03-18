@@ -4,12 +4,6 @@
 ## v3.5
 - fix metadata not found
 
-## v3.5
-- fix metadata not found
-
-## v3.4
-- fix metadata not found
-
 ## v3.4
 - update package structure
 - add install/uninstall scripts
@@ -17,29 +11,23 @@
 - add changelog in BB Code format
 
 ## v3.3
-
 - fix a potential crash trigger
 
 ## 3.2
-
 - fix incorrect fix of incorrect area obtainment
 
 ## v3.1
-
 - fix incorrect area obtainment
 
 # v3.0
-
 - also swap windows not occupying the full screen height
 - add Dutch and German translations of metadata 
 
 # v2.0
-
 - more accurate detection of neighboring window
 - compatibility with older versions of KWin
 - more obvious shortcut name
 - rewrite for better code structure
 
 # v1.0
-
 - initial release
