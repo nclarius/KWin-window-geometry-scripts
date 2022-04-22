@@ -1,4 +1,4 @@
-# Swap Left and Right
+# Swap Halves
 
 Extension for KDE’s window manager to add keyboard shortcuts to swap the windows tiled to the left and right or top and bottom halves of the screen.
 
