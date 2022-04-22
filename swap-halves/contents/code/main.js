@@ -7,7 +7,7 @@ GNU General Public License v3.0
 // swap left and right halves for the active window
 registerShortcut("Swap halves: left and right", 
                  "Swap halves: left and right", 
-                 "Meta+Shift+Right", 
+                 "Meta+Ctrl+Right", 
                  () => {
     console.debug("swaphalves:", "left and right");
 
@@ -46,7 +46,7 @@ registerShortcut("Swap halves: left and right",
 // swap top and bottom halves for the active window
 registerShortcut("Swap halves: top and bottom", 
                  "Swap halves: top and bottom", 
-                 "Meta+Shift+Down", 
+                 "Meta+Ctrl+Down", 
                  () => {
     console.debug("swaphalves:", "top and bottom");
 
