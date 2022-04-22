@@ -1,6 +1,6 @@
 # Swap Left and Right
 
-Extension for KDE’s window manager to add a keyboard shortcut to swap the windows tiled to the left and right halves of the screen.
+Extension for KDE’s window manager to add keyboard shortcuts to swap the windows tiled to the left and right or top and bottom halves of the screen.
 
 ![screenshot](.img/screenshot.gif)
 
@@ -11,7 +11,7 @@ Extension for KDE’s window manager to add a keyboard shortcut to swap the wind
 
 ### Dependencies
 
-`kwin` (tested with v5.24 on X11).
+`kwin`.
 
 ### Installation via graphical interface
 
@@ -29,7 +29,7 @@ cd KWin-window-positioning-scripts/swap-left-right
 
 ## Configuration
 
-To set the shortcut to trigger the action, go to *Settings* > *Shortcuts* > search for *Swap Left and Right* > set your preferred shortcut.
+To set the shortcuts to trigger the action, go to *Settings* > *Shortcuts* > search for *Swap halves* > set your preferred shortcut.
 
 
 

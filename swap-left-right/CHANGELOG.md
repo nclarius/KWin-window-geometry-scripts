@@ -1,3 +1,6 @@
+# v4.0
+- add functionality to swap top and bottom halves
+
 ## v3.6
 - fix metadata not found
 

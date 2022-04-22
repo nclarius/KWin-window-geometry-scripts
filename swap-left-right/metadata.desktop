@@ -1,18 +1,15 @@
-# KWin Script Swap Left Right
+# KWin Script Halves
 # (C) 2021 Natalie Clarius <natalie_clarius@yahoo.de>
 # GNU General Public License v3.0
 
 [Desktop Entry]
-Name=Swap Left and Right
-Name[de]=Rechts und links tauschen
-Name[nl]=Verwissel links en rechts
-Comment=Swap the windows tiled to the left and right halves of the screen
-Comment[de]=Tauscht die an den linken und rechten Bildschirmhälften angehefteten Fenster
-Comment[nl]=Verwissel de links en rechts getegelde vensters van plaats
-Icon=preferences-system-windows
+Name=Swap Halves
+Name[de]=Hälften tauschen
+Comment=Swap the windows tiled to the horizontal or vertical halves of the screen
+Comment[de]=Tauscht die an den horizontalen oder vertikalen Bildschirmhälften angehefteten Fenster
 
-X-KDE-PluginInfo-Name=swapleftright
-X-KDE-PluginInfo-Version=3.6
+X-KDE-PluginInfo-Name=swaphalves
+X-KDE-PluginInfo-Version=4.0
 X-KDE-PluginInfo-Author=Natalie Clarius
 X-KDE-PluginInfo-Email=natalie_clarius@yahoo.de
 X-KDE-PluginInfo-License=GPL v3.0
@@ -23,6 +20,6 @@ X-Plasma-API=javascript
 X-Plasma-MainScript=code/main.js
 X-KDE-ServiceTypes=KWin/Script,KCModule
 X-KDE-ConfigModule=kwin/effects/configs/kcm_kwin4_genericscripted
-X-KDE-PluginKeyword=swapleftright
-X-KDE-ParentComponents=swapleftright
+X-KDE-PluginKeyword=swaphalves
+X-KDE-ParentComponents=swaphalves
 X-KDE-PluginInfo-EnabledByDefault=true
