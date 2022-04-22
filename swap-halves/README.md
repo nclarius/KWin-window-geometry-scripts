@@ -15,14 +15,14 @@ Extension for KDE’s window manager to add keyboard shortcuts to swap the windo
 
 ### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap Left and Right* > *Install*.
+1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap halves* > *Install*.
 2. Enable the script by activating its checkbox, and apply the settings.
 
 ### Installation via command line
 
 ```bash
 git clone https://github.com/nclarius/KWin-window-geometry-scripts.git
-cd KWin-window-positioning-scripts/swap-left-right
+cd KWin-window-geometry-scripts/swap-halves
 ./install.sh
 ```
 
