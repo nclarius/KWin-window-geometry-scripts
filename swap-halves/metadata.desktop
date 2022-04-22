@@ -7,6 +7,7 @@ Name=Swap Halves
 Name[de]=Hälften tauschen
 Comment=Swap the windows tiled to the horizontal or vertical halves of the screen
 Comment[de]=Tauscht die an den horizontalen oder vertikalen Bildschirmhälften angehefteten Fenster
+Icon=preferences-system-windows
 
 X-KDE-PluginInfo-Name=swaphalves
 X-KDE-PluginInfo-Version=4.0
