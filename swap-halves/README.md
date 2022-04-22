@@ -29,7 +29,7 @@ cd KWin-window-geometry-scripts/swap-halves
 
 ## Configuration
 
-To set the shortcuts to trigger the action, go to *Settings* > *Shortcuts* > search for *Swap halves* > set your preferred shortcut.
+To set the shortcuts to trigger the action, go to *System Settings* > *Shortcuts* > search for *Swap halves* > set your preferred shortcuts.
 
 
 
