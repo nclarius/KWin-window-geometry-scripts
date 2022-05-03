@@ -15,7 +15,7 @@ Extension for KDE’s window manager to add keyboard shortcuts to swap the windo
 
 ### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap Sides* > *Install*.
+1. Install the script via Discover or *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Swap Sides* > *Install*.
 2. Enable the script by activating its checkbox, and apply the settings.
 
 ### Installation via command line

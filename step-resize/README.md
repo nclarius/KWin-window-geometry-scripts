@@ -24,7 +24,7 @@ The step sizes and the keyboard shortcuts are configurable.
 
 ### Installation via graphical interface
 
-Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Resize* > *Install*.
+Install the script via Discover or *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Resize* > *Install*.
 
 ### Installation via command line
 

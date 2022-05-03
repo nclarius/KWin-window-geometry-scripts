@@ -19,7 +19,7 @@ The step sizes and the keyboard shortcuts are configurable.
 
 ### Installation via graphical interface
 
-1. Install the script via *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Move* > *Install*.
+1. Install the script via Discover or *System Settings* > *Window Management* > *KWin Scripts* > *Get New Scripts …* > search for *Step Move* > *Install*.
 2. Enable the script by activating its checkbox, and apply the settings.
 
 ### Installation via command line
