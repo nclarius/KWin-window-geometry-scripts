@@ -14,7 +14,7 @@ registerShortcut("Swap Window Sides: Left and Right",
     // get area geometry
     var active = workspace.activeWindow;
     if (!active) return;
-    var area = workspace.windowArea(KWin.MaximizeArea, active);
+    var area = workspace.clientArea(KWin.MaximizeArea, active);
 
     // get left windows
     var left = workspace.windowList().filter(win =>
