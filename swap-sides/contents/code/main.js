@@ -51,7 +51,7 @@ registerShortcut("Swap Window Sides: Top and Bottom",
     // get area geometry
     var active = workspace.activeWindow;
     if (!active) return;
-    var area = workspace.windowArea(KWin.MaximizeArea, active);
+    var area = workspace.clientArea(KWin.MaximizeArea, active);
 
     // get top windows
     var top = workspace.windowList().filter(win =>
