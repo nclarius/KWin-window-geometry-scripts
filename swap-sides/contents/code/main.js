@@ -12,7 +12,7 @@ registerShortcut("Swap Window Sides: Left and Right",
     console.debug("swapsides:", "left and right");
 
     // get area geometry
-    var active = workspace.activeWindow();
+    var active = workspace.activeWindow;
     if (!active) return;
     var area = workspace.windowArea(KWin.MaximizeArea, active);
 
