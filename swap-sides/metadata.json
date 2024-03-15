@@ -1,0 +1,31 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "natalie_clarius@yahoo.de",
+                "Name": "Natalie Clarius"
+            }
+        ],
+        "Description": "Swap the windows tiled to the horizontal or vertical sides of the screen",
+        "Description[de]": "Tauscht die an den horizontalen oder vertikalen Bildschirmseiten angehefteten Fenster",
+        "EnabledByDefault": true,
+        "Icon": "preferences-system-windows",
+        "Id": "swapsides",
+        "License": "GPLv3.0",
+        "Name": "Swap Sides",
+        "Name[de]": "Hälften tauschen",
+        "ServiceTypes": [
+            "KWin/Script",
+            "KCModule"
+        ],
+        "Version": "5.0",
+        "Website": "https://store.kde.org/p/1617645"
+    },
+    "X-KDE-ParentComponents": [
+        "swapsides"
+    ],
+    "X-KDE-PluginKeyword": "swapsides",
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js",
+    "KPackageStructure": "KWin/Script"
+}
