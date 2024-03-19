@@ -19,12 +19,12 @@ registerShortcut("Swap Window Sides: Left and Right",
     // get left windows
     var left = workspace.windowList().filter(win =>
         relevant(win, active) &&
-        near(win.geometry.left, area.left, area.width));
+        near(win.frameGeometry.left, area.left, area.width));
 
     // get right windows
     var right = workspace.windowList().filter(win =>
         relevant(win, active) &&
-        near(win.geometry.right, area.right, area.width));
+        near(win.frameGeometry.right, area.right, area.width));
 
     // move left windows to right
     for (var i = 0; i < left.length; i++) {
@@ -56,12 +56,12 @@ registerShortcut("Swap Window Sides: Top and Bottom",
     // get top windows
     var top = workspace.windowList().filter(win =>
         relevant(win, active) && 
-        near(win.geometry.top, area.top, area.height));
+        near(win.frameGeometry.top, area.top, area.height));
     
     // get bottom windows
     var bottom = workspace.windowList().filter(win =>
         relevant(win, active) &&
-        near(win.geometry.bottom, area.bottom, area.height));
+        near(win.frameGeometry.bottom, area.bottom, area.height));
 
     // move top windows to bottom
     for (var i = 0; i < top.length; i++) {
