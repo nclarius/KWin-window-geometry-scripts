@@ -29,14 +29,14 @@ registerShortcut("Swap Window Sides: Left and Right",
     // move left windows to right
     for (var i = 0; i < left.length; i++) {
         win = left[i];
-        win.geometry.x = (area.x + area.width) - win.width;
+        win.frameGeometry.x = (area.x + area.width) - win.width;
         win.minimized = false;
     }
 
     // move right windows to left
     for (var i = 0; i < right.length; i++) {
         win = right[i];
-        win.geometry.x = area.x;
+        win.frameGeometry.x = area.x;
         win.minimized = false;
     }
 });
@@ -66,14 +66,14 @@ registerShortcut("Swap Window Sides: Top and Bottom",
     // move top windows to bottom
     for (var i = 0; i < top.length; i++) {
         win = top[i];
-        win.geometry.y = (area.y + area.height) - win.height;
+        win.frameGeometry.y = (area.y + area.height) - win.height;
         win.minimized = false;
     }
 
     // move bottom windows to top
     for (var i = 0; i < bottom.length; i++) {
         win = bottom[i];
-        win.geometry.y = area.y;
+        win.frameGeometry.y = area.y;
         win.minimized = false;
     }
 });
