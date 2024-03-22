@@ -17,12 +17,12 @@ registerShortcut("Swap Window Sides: Left and Right",
         var area = workspace.clientArea(KWin.MaximizeArea, active);
 
         // get left windows
-        var left = workspace.clients().filter(win =>
+        var left = workspace.windowList().filter(win =>
             relevant(win, active) &&
             near(win.frameGeometry.left, area.left, area.width));
 
         // get right windows
-        var right = workspace.clients().filter(win =>
+        var right = workspace.windowList().filter(win =>
             relevant(win, active) &&
             near(win.frameGeometry.right, area.right, area.width));
 
@@ -54,12 +54,12 @@ registerShortcut("Swap Window Sides: Top and Bottom",
         var area = workspace.clientArea(KWin.MaximizeArea, active);
 
         // get top windows
-        var top = workspace.clients().filter(win =>
+        var top = workspace.windowList().filter(win =>
             relevant(win, active) &&
             near(win.frameGeometry.top, area.top, area.height));
 
         // get bottom windows
-        var bottom = workspace.clients().filter(win =>
+        var bottom = workspace.windowList().filter(win =>
             relevant(win, active) &&
             near(win.frameGeometry.bottom, area.bottom, area.height));
 
